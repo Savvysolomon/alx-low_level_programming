@@ -1,16 +1,20 @@
+/*
+* File: 3-print_alphabets.c
+* Auth: Solomon Umoh
+*/
 #include <stdio.h>
 /**
-*main - entry point
-*return: Always reeturn 0 (Success)
+* main - Prints the alphabet in lowercase, and then in uppercase.
+*
+* Return: Always 0.
 */
-int main(void) /* main function */
+int main(void)
 {
-char a;
-for (a = 'a'; a <= 'z'; a++)
-putchar(a);
-for (a = 'A'; a <= 'Z'; a++)
-putchar(a);
-putchar (a);
-putchar ('\n');
+char alphabet;
+for (alphabet = 'a'; alphabet <= 'z'; alphabet++)
+putchar(alphabet)
+for (alphabet = 'A'; alphabet <= 'Z'; alphabet++)
+putchar(alphabet);
+putchar('\n');
 return (0);
 }
