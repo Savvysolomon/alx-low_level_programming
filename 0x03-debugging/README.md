@@ -1,2 +1,2 @@
-#ALX LOW LEVEL PROGRAMMING
-C Programming - Debugging Project 
+# Debugging Project 
+This readme describes various task in debugging
