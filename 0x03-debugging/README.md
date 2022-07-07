@@ -1,2 +1,1 @@
-This is debugging project 
-
+C-Debugging Directory
