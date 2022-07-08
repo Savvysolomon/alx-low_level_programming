@@ -1,6 +1,5 @@
 #include "main.h"
 /**
-*
 * print_numbers - entry point
 * Description: Prints the numbers with _putchar
 * Return: void
