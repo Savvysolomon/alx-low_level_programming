@@ -1,29 +1,40 @@
-#include "main.h"
 #include <stdio.h>
-
+#include <stdlib.h>
+#include <time.h>
 /**
-* rev_string - This fuction print a string reverser
-*@s: this is the pointer that point to a string
+* main - random password generator for 101-crackme
+* Return: always 0
 */
-void rev_string(char *s)
+int main(void)
 {
-int a, len;
-char *begin, *end = s;
-for (a = 0; s[a] != '\0' && s[a + 1] != '\0'; a++)
+int i, j, k, s;
+char c[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+char p[58];
+srand(time(NULL));
+while (s != 2772)
 {
-end++;
+i = k = s = 0;
+while ((2772 - 122) > s)
+{
+j = rand() % 62;
+p[i] = c[j];
+s += c[j];
+i++;
 }
-len = a + 1;
-begin = s;
-for (a = 0; a < len / 2; a++)
+while (c[k])
 {
-char x;
-x = *end;
-*end = *begin;
-*begin = x;
-begin++;
-end--;
+if (c[k] == (2772 - s))
+{
+p[i] = c[k];
+s += c[k];
+i++;
+break;
 }
-end[len + 1] = '\0';
+k++;
+}
+}
+p[i] = '\0';
+printf("%s", p);
+return (0);
 }
 
