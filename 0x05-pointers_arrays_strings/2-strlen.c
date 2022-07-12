@@ -6,9 +6,7 @@
 */
 int _strlen(char *s)
 {
-int sText[1000];
-int i;
-for (i = 0; sText[i] != '\0'; ++i);
-return (i);
+int index;
+for (index = 0; s[index] != '\0' ; index++);
+return (index);
 }
-
