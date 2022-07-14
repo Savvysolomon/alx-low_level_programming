@@ -15,3 +15,4 @@ return (*(s1 + i) - *(s2 + i));
 else
 return (0);
 }
+
