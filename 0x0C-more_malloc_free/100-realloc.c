@@ -1,52 +1,39 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <time.h>
 
 /**
-* simple_print_buffer - prints buffer in hexa
-* @buffer: the address of memory to print
-* @size: the size of the memory to print
-* Return: Nothing.
-*/
-void simple_print_buffer(char *buffer, unsigned int size)
-{
-unsigned int i;
-
-i = 0;
-while (i < size)
-{
-if (i % 10)
-{
-printf(" ");
-}
-if (!(i % 10) && i)
-{
-printf("\n");
-}
-printf("0x%02x", buffer[i]);
-i++;
-}
-printf("\n");
-}
-
-/**
-* main - check the code for Holberton School students.
-* Return: Always 0.
+* main - random password generator for 101-crackme
+* Return: always 0
 */
 int main(void)
 {
-char *p;
-int i;
+int i, j, k, s;
+char c[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+char p[58];
 
-p = malloc(sizeof(char) * 10);
-p = _realloc(p, sizeof(char) * 10, sizeof(char) * 98);
-i = 0;
-while (i < 98)
+srand(time(NULL));
+while (s != 2772)
 {
-p[i++] = 98;
+i = k = s = 0;
+while ((2772 - 122) > s)
+{
+j = rand() % 62;
+p[i] = c[j];
+i++;
 }
-simple_print_buffer(p, 98);
-free(p);
+while (c[k])
+{
+if (c[k] == (2772 - s))
+{
+p[i] = c[k];
+s += c[k];
+i++;
+break;
+}
+k++;
+}
+p[i] = '\0';
+printf("%s", p);
 return (0);
 }
