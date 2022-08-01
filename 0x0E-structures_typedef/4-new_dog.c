@@ -1,46 +1,38 @@
 #include "dog.h"
-
 /**
 * new_dog - creates a new dog
-* @name: name of dog
-* @age: age of dog
-* @owner: owner of dog
-*
-* Return: pointer to new dog
+* @name: new dog's name
+* @age: new dog's age
+* @owner: new dog's owner
+* Return: pointer to new dog struct
 */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-unsigned int nl, ol, i;
-dog_t *dog;
+dog_t *new_dog;
+int i;
 
-if (name == NULL || owner == NULL)
+new_dog = malloc(sizeof(dog_t));
+if (new_dog == NULL)
 return (NULL);
-dog = malloc(sizeof(dog_t));
-if (dog == NULL)
-return (NULL);
-for (nl = 0; name[nl]; nl++)
-;
-nl++;
-dog->name = malloc(nl * sizeof(char));
-if (dog->name == NULL)
+new_dog->name = malloc(sizeof(name) + 1);
+if (new_dog->name == NULL)
 {
-free(dog);
+free(new_dog);
 return (NULL);
 }
-for (i = 0; i < nl; i++)
-dog->name[i] = name[i];
-dog->age = age;
-for (ol = 0; owner[ol]; ol++)
-;
-ol++;
-dog->owner = malloc(ol * sizeof(char));
-if (dog->owner == NULL)
+new_dog->owner = malloc(sizeof(owner) + 1);
+if (new_dog->owner == NULL)
 {
-free(dog->name);
-free(dog);
+free(new_dog->name);
+free(new_dog);
 return (NULL);
 }
-for (i = 0; i < ol; i++)
-dog->owner[i] = owner[i];
-return (dog);
+for (i = 0; name[i]; i++)
+new_dog->name[i] = name[i];
+new_dog->name[i] = '\0';
+new_dog->age = age;
+for (i = 0; owner[i]; i++)
+new_dog->owner[i] = owner[i];
+new_dog->owner[i] = '\0';
+return (new_dog);
 }
