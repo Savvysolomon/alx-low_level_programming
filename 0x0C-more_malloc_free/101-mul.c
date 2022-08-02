@@ -1,44 +1,91 @@
-#include <stdlib.h>
 #include "main.h"
 
+
 /**
-* _realloc - allocate memory and set all values to 0
-* @ptr: pointer to the memory previously allocated (malloc(old_size))
-* @old_size: size previously allocated
-* @new_size: new size to reallocate
-* Return: pointer to reallocated memory
+* _puts - prints a string, followed by a new line,
+* @str: pointer to the string to print
+* Return: void
 */
 
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+void _puts(char *str)
 {
-oid *p;
-unsigned int i;
-
-if (new_size == 0 && ptr != NULL) /* free memory if reallocate 0 */
+int i = 0;
+while (str[i])
 {
-free(ptr);
-return (NULL);
+_putchar(str[i]);
+i++;
 }
 
-if (new_size == old_size) /* return ptr if reallocating same old size */
-return (ptr);
-
-if (ptr == NULL) /* malloc new size if ptr is originally null */
-{
-p = malloc(new_size);
-if (p == NULL)
-return (NULL);
-else
-return (p);
 }
 
-p = malloc(new_size); /* malloc and check error */
-if (p == NULL)
-return (NULL);
-/* fill up values up till minimum of old or new size */
-for (i = 0; i < old_size && i < new_size; i++)
-*((char *)p + i) = *((char *)ptr + i);
-free(ptr); /* free old ptr */
+/**
+* _atoi - convert a string to an integer.
+* @s: char type string
+* Return: integer converted
+*/
 
-return (p);
+int _atoi(const char *s)
+{
+int sign = 1;
+unsigned long int resp = 0, firstNum, i;
+
+for (firstNum = 0; !(s[firstNum] >= 48 && s[firstNum] <= 57); firstNum++)
+{
+if (s[firstNum] == '-')
+{
+sign *= -1;
+}
+}
+
+for (i = firstNum; s[i] >= 48 && s[i] <= 57; i++)
+{
+resp *= 10;
+resp += (s[i] - 48);
+}
+
+return (sign * resp);
+}
+
+/**
+* print_int - prints an integer.
+* @n: int
+* Return: 0
+*/
+
+void print_int(unsigned long int n)
+{
+
+unsigned  long int divisor = 1, i, resp;
+
+for (i = 0; n / divisor > 9; i++, divisor *= 10)
+;
+
+for (; divisor >= 1; n %= divisor, divisor /= 10)
+{
+resp = n / divisor;
+_putchar('0' + resp);
+}
+
+}
+
+/**
+* main - print the result of the multiplication, followed by a new line
+* @argc: int
+* @argv: list
+* Return: 0
+*/
+
+int main(int argc, char const *argv[])
+{
+(void)argc;
+
+if (argc != 3)
+{
+_puts("Error ");
+exit(98);
+}
+print_int(_atoi(argv[1]) * _atoi(argv[2]));
+_putchar('\n');
+
+return (0);
 }
