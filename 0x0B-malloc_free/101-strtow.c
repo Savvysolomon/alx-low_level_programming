@@ -1,14 +1,15 @@
-#include "main.h"
+#include "holberton.h"
 #include <stdlib.h>
 
 /**
-*wrdcnt - counts the number of words in a string
+* wrdcnt - counts the number of words in a string
 * @s: string to count
+*
 * Return: int of number of words
 */
 int wrdcnt(char *s)
 {
-it i, n = 0;
+int i, n = 0;
 
 for (i = 0; s[i]; i++)
 {
@@ -28,6 +29,7 @@ return (n);
 * strtow - splits a string into words
 * @str: string to split
 * Return: pointer to an array of strings
+*
 */
 char **strtow(char *str)
 {
@@ -50,6 +52,8 @@ if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
 {
 for (j = 1; str[i + j] != ' ' && str[i + j]; j++)
 ;
+j++;
+w[wc] = (char *)malloc(j * sizeof(char));
 j--;
 if (w[wc] == NULL)
 {
@@ -70,4 +74,3 @@ i++;
 }
 return (w);
 }
-
