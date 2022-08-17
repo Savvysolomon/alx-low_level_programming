@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include "lists.h"
 
 /**
 * free_listint_safe - function frees a list
