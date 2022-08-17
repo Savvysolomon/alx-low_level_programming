@@ -1,54 +1,35 @@
+#include <stdlib.h>
 #include "lists.h"
-/**
-* remove_loop - finds the loop in a linked list and adds NULL to end it
-* @head: pointer to first node in the list
-* Return:  none
-*/
-void remove_loop(listint_t *head)
-{
 
-listint_t *tmp, *start;
-size_t i, count;
-
-count = 0;
-tmp = head;
-while (tmp)
-{
-count++;
-start = head;
-i = 0;
-while (i < count)
-{
-if (start == tmp->next)
-{
-tmp->next = NULL;
-return;
-}
-start = start->next;
-i++;
-}
-tmp = tmp->next;
-}
-}
 /**
-* free_listint_safe - frees a listint_t linked list, function can print
-*                      lists with a loop
-* @h: pointer to pointer to first node in the list
-* Return: the size of the list that was free'd, sets head to NULL
+* free_listint_safe - function frees a list
+* @h: head of list
+*
+* Return: size of list that was freed
 */
 size_t free_listint_safe(listint_t **h)
 {
 listint_t *tmp;
-size_t count;
+size_t count = 0;
+long int diff;
 
-remove_loop(*h);
-count = 0;
-while (h != NULL && *h != NULL)
+while (*h)
 {
 count++;
-tmp = *h;
-*h = tmp->next;
-free(tmp);
+diff = *h - (*h)->next;
+if (diff > 0)
+{
+tmp = (*h)->next;
+free(*h);
+*h = tmp;
 }
+else
+{
+free(*h);
+*h = NULL;
+break;
+}
+}
+*h = NULL;
 return (count);
 }
